@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина - SYNC APPAREL</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe6e6 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background-color: #000000;
+            color: white;
+            font-size: 16px;
+            height: 60px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        
+        .header-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .header-center a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .header-icon {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #d63384;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .cart-container {
+            max-width: 1000px;
+            margin: 80px auto 40px;
+            padding: 20px;
+        }
+        
+        .page-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: #333;
+        }
+        
+        .cart-items {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        
+        .item-image {
+            width: 80px;
+            height: 80px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #ddd;
+            margin-right: 20px;
+        }
+        
+        .item-info {
+            flex: 1;
+        }
+        
+        .item-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .item-price {
+            font-size: 16px;
+            color: #d63384;
+            font-weight: bold;
+        }
+        
+        .item-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 5px;
+cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        
+        .remove-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .cart-summary {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .total-amount {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #d63384;
+        }
+        
+        .checkout-btn {
+            background: #000;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s ease;
+        }
+        
+        .checkout-btn:hover {
+            background: #333;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+        
+        .empty-cart i {
+            font-size: 80px;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+        
+        .continue-shopping {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #000;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Черная верхняя полоска -->
+    <div class="header">
+        <div class="header-left">
+            <a href="/catalog" class="header-icon">
+                <i class="fas fa-list"></i>
+            </a>
+        </div>
+        
+        <div class="header-center">
+            <a href="/">SYNC APPAREL</a>
+        </div>
+        
+        <div class="header-right">
+            <a href="/cart" class="header-icon">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count" id="cart-count">{{ cart|length }}</span>
+            </a>
+            <a href="/profile" class="header-icon">
+                <i class="fas fa-user"></i>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Корзина -->
+    <div class="cart-container">
+        <h1 class="page-title">Корзина</h1>
+        
+        {% if cart %}
+            <div class="cart-items">
+                {% for product in cart %}
+                    <div class="cart-item" data-product-id="{{ product.id }}">
+                        <div class="item-image">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <div class="item-info">
+                            <div class="item-name">{{ product.name }}</div>
+                            <div class="item-price">{{ product.price }} ₽ × {{ product.quantity }} = {{ product.subtotal }} ₽</div>
+                        </div>
+                        <div class="item-controls">
+                            <div class="quantity-controls">
+                                <button class="quantity-btn" onclick="updateQuantity({{ product.id }}, {{ product.quantity - 1 }})">-</button>
+                                <input type="number" class="quantity-input" value="{{ product.quantity }}" 
+                                       min="1" onchange="updateQuantity({{ product.id }}, this.value)">
+<button class="quantity-btn" onclick="updateQuantity({{ product.id }}, {{ product.quantity + 1 }})">+</button>
+                            </div>
+                            <button class="remove-btn" onclick="removeFromCart({{ product.id }})">
+                                Удалить
+                            </button>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <div class="cart-summary">
+                <div class="total-amount">Итого: {{ total }} ₽</div>
+                <button class="checkout-btn">Оформить заказ</button>
+            </div>
+        {% else %}
+            <div class="empty-cart">
+                <i class="fas fa-shopping-bag"></i>
+                <h2>Корзина пуста</h2>
+                <p>Добавьте товары из каталога</p>
+                <a href="/catalog" class="continue-shopping">Перейти в каталог</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <script>
+        // Обновление количества
+        function updateQuantity(productId, quantity) {
+            quantity = parseInt(quantity);
+            if (quantity < 1) quantity = 1;
+            
+            fetch('/update_cart', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({product_id: productId, quantity: quantity})
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    location.reload();
+                }
+            });
+        }
+        
+        // Удаление из корзины
+        function removeFromCart(productId) {
+            if (confirm('Удалить товар из корзины?')) {
+                fetch('/remove_from_cart', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({product_id: productId})
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        location.reload();
+                    }
+                });
+            }
+        }
+        
+        // Оформление заказа
+        document.querySelector('.checkout-btn')?.addEventListener('click', function() {
+            alert('Заказ оформлен! Спасибо за покупку!');
+        });
+    </script>
+</body>
+</html>

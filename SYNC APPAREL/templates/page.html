@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - SYNC APPAREL</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe6e6 100%);
+            color: #333;
+            line-height: 1.6;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        body::before {
+            content: "SYNC APPAREL";
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 100px;
+            font-weight: bold;
+            color: rgba(255, 182, 193, 0.15);
+            z-index: -1;
+            text-align: center;
+            letter-spacing: 8px;
+            filter: blur(1px);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background-color: #000000;
+            color: white;
+            font-size: 16px;
+            height: 60px;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .header-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: white;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .header-icon {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+        
+        .header-icon:hover {
+            color: #ffb6c1;
+        }
+        
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin: 40px 0;
+            font-size: 18px;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: #666;
+            transition: color 0.3s ease;
+            padding: 10px 20px;
+            border-radius: 25px;
+        }
+        
+        .nav-link:hover {
+            color: #d63384;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        .page-content {
+            text-align: center;
+            margin: 50px 0;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            display: inline-block;
+            max-width: 600px;
+        }
+        
+        .page-title {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .brand {
+            text-align: center;
+            margin: 60px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            display: inline-block;
+        }
+        
+        .brand-letters {
+            font-size: 48px;
+            font-weight: bold;
+            letter-spacing: 20px;
+            margin-bottom: 10px;
+color: #333;
+        }
+        
+        .brand-name {
+            font-size: 24px;
+            letter-spacing: 8px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- Черная верхняя полоска с иконками -->
+    <div class="header">
+        <!-- Иконка каталога слева -->
+        <div class="header-left">
+            <a href="/catalog" class="header-icon">
+                <i class="fas fa-list"></i>
+            </a>
+        </div>
+        
+        <!-- Название по центру -->
+<div class="header-center">
+    <a href="/" style="color: white; text-decoration: none;">SYNC APPAREL</a>
+</div>
+        
+        <!-- Иконки справа -->
+        <div class="header-right">
+            <a href="/cart" class="header-icon">
+                <i class="fas fa-shopping-bag"></i>
+            </a>
+            <a href="/profile" class="header-icon">
+                <i class="fas fa-user"></i>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Основной контент -->
+    <div class="content">
+        <!-- Навигация -->
+        <nav class="navigation">
+            <a href="/" class="nav-link">Главная</a>
+            <a href="/reviews" class="nav-link">Отзывы</a>
+            <a href="/about" class="nav-link">О нас</a>
+            <a href="/contacts" class="nav-link">Контакты</a>
+        </nav>
+        
+        <!-- Содержание страницы -->
+        <div class="page-content">
+            <h1 class="page-title">{{ title }}</h1>
+            <p style="color: #666;">Содержание страницы будет здесь</p>
+        </div>
+    </div>
+</body>
+</html>
