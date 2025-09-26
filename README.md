@@ -1,13 +1,4 @@
 # SYNC APPAREL - Интернет-магазин женской одежды
-
-![SYNC APPAREL](https://img.shields.io/badge/SYNC-APPAREL-pink) 
-![Flask](https://img.shields.io/badge/Flask-2.3.3-green)
-![Python](https://img.shields.io/badge/Python-3.8+-blue)
-
-<div align="center">
-  <img src="static/images/logo.jpg" alt="SYNC APPAREL" width="200">
-</div>
-
 🛍️ О проекте
 
 SYNC APPAREL - это современный интернет-магазин женской одежды, разработанный на Flask. Проект включает полный функционал для онлайн-продаж с красивым и удобным интерфейсом.
