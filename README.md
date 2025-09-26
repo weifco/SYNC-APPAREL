@@ -97,5 +97,4 @@ SYNC APPAREL - это современный интернет-магазин ж�
   <p>Сделано с ❤️ для SYNC APPAREL</p>
   <p>© 2024 SYNC APPAREL. Все права защищены.</p>
 </div>
-git clone https://github.com/ваш-username/sync-apparel.git
-cd sync-apparel
+
